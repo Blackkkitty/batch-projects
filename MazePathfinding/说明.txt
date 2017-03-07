@@ -1,0 +1,38 @@
+bot_test.bat    为样例算法文件
+setting.ini     为配置文件，用于选择算法和迷宫
+
+算法文件的编写请参考样例 bot_test.bat
+
+算法文件可用的变量说明：
+（为保证正常运行不要修改以下变量）
+
+map                 当前地图名
+%map%_width         当前地图宽度
+%map%_height        当前地图高度
+%map%_x_y           地图位置（x,y）的值（0表示有墙 1表示无墙） 例：!%map%_1_1!表示（1，1）位置的值
+vis_count           通过go到访过的位置数
+vis_x_y             地图位置（x,y）是否到访过的值（0表示未到访过 1表示到访过）
+path_count          迷宫中总的可到访的位置数
+current_x           当前所在位置x坐标
+current_y           当前所在位置y坐标
+start_x,start_y     起点位置x，y坐标
+end_x,end_y         终点位置x，y坐标
+
+_PATH               通路图形
+_WALL               墙图形
+_VIS                到访位置图形
+_P                  人物图形
+
+steps               当前移动步数
+timer               当前所用时间（单位0.01秒）
+
+为保证正常运行, 以下保留变量名请不要修改或使用：
+_, _1, _2, maze, bot, _x, _y, begintime, maze_x, maze_y
+
+语句：
+
+call go <x> <y>     
+若(x,y)无墙，则移动至(x,y)。同时会更新移动步数，用时，到访位置和当前位置
+
+if "%current_x%_%current_y%" EQU "%end_x%_%end_y%" (goto:eof)
+若当前位置为终点则结束算法
